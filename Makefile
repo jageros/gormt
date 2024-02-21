@@ -1,4 +1,4 @@
-all: # 构建
+makeall: # 构建
 	make tar 
 windows:
 	CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o gormt.exe main.go 

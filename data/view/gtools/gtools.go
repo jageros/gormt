@@ -11,9 +11,9 @@ import (
 
 	"github.com/xxjwxc/gormt/data/config"
 
-	"github.com/xxjwxc/gormt/data/view/model/genmssql"
+	//"github.com/xxjwxc/gormt/data/view/model/genmssql"
 	"github.com/xxjwxc/gormt/data/view/model/genmysql"
-	"github.com/xxjwxc/gormt/data/view/model/gensqlite"
+	//"github.com/xxjwxc/gormt/data/view/model/gensqlite"
 	"github.com/xxjwxc/public/tools"
 )
 
@@ -35,10 +35,10 @@ func showCmd() {
 	switch config.GetDbInfo().Type {
 	case 0: // mysql
 		modeldb = genmysql.GetModel()
-	case 1: // sqllite
-		modeldb = gensqlite.GetModel()
-	case 2: //
-		modeldb = genmssql.GetModel()
+		//case 1: // sqllite
+		//	modeldb = gensqlite.GetModel()
+		//case 2: //
+		//	modeldb = genmssql.GetModel()
 	}
 	if modeldb == nil {
 		mylog.Error(fmt.Errorf("modeldb not fund : please check db_info.type (0:mysql , 1:sqlite , 2:mssql) "))

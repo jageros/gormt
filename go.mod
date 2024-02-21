@@ -14,9 +14,7 @@ require (
 	gopkg.in/go-playground/validator.v9 v9.30.2
 	gopkg.in/yaml.v3 v3.0.0-20200313102051-9f266ea9e77c
 	gorm.io/driver/mysql v1.0.1
-	gorm.io/driver/sqlite v1.1.4
-	gorm.io/driver/sqlserver v1.0.7
-	gorm.io/gorm v1.21.4
+	gorm.io/gorm v1.25.2-0.20230530020048-26663ab9bf55
 )
 
 // replace github.com/xxjwxc/public => ../public

@@ -7,7 +7,7 @@ import (
 	"github.com/jroimartin/gocui"
 	"github.com/xxjwxc/gormt/data/view/model"
 	"github.com/xxjwxc/gormt/data/view/model/genmysql"
-	"github.com/xxjwxc/gormt/data/view/model/gensqlite"
+	//"github.com/xxjwxc/gormt/data/view/model/gensqlite"
 
 	"github.com/xxjwxc/gormt/data/config"
 
@@ -79,8 +79,8 @@ func generate(g *gocui.Gui, v *gocui.View) {
 	switch config.GetDbInfo().Type {
 	case 0:
 		modeldb = genmysql.GetModel()
-	case 1:
-		modeldb = gensqlite.GetModel()
+		//case 1:
+		//	modeldb = gensqlite.GetModel()
 	}
 	if modeldb == nil {
 		mylog.Error(fmt.Errorf("modeldb not fund : please check db_info.type (0:mysql , 1:sqlite , 2:mssql) "))

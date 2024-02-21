@@ -160,6 +160,7 @@ func (s *GenStruct) GenerateColumnName() []string {
 		Em         []struct {
 			ColumnName string
 			StructName string
+			Type       string
 		}
 	}
 	data.StructName = s.Name
@@ -168,18 +169,21 @@ func (s *GenStruct) GenerateColumnName() []string {
 			data.Em = append(data.Em, []struct {
 				ColumnName string
 				StructName string
+				Type       string
 			}{
-				{ColumnName: "id", StructName: "ID"},
-				{ColumnName: "created_at", StructName: "CreatedAt"},
-				{ColumnName: "updated_at", StructName: "UpdatedAt"},
-				{ColumnName: "deleted_at", StructName: "DeletedAt"},
+				{ColumnName: "id", StructName: "ID", Type: "uint"},
+				{ColumnName: "created_at", StructName: "CreatedAt", Type: "time.Time"},
+				{ColumnName: "updated_at", StructName: "UpdatedAt", Type: "time.Time"},
+				{ColumnName: "deleted_at", StructName: "DeletedAt", Type: "gorm.DeletedAt"},
 			}...)
 		} else if len(v.ColumnName) > 0 {
 			data.Em = append(data.Em, struct {
 				ColumnName string
 				StructName string
+				Type       string
 			}{ColumnName: v.ColumnName,
 				StructName: v.Name,
+				Type:       v.Type,
 			})
 		}
 
@@ -260,7 +264,7 @@ func (p *GenPackage) AddStruct(st GenStruct) {
 // Generate Get the result data.获取结果数据
 func (p *GenPackage) Generate() string {
 	p.genimport() // auto add import .补充 import
-
+	p.AddImport(`"time"`)
 	var pa generate.PrintAtom
 	pa.Add("package", p.Name)
 	// add import

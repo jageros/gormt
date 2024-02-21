@@ -81,12 +81,12 @@ func GetOutDir() string {
 	return _map.OutDir
 }
 
-// // SetSingularTable Set Disabled Table Name Plurals.设置禁用表名复数
+// // SetSingularTable Set Disabled Table ChainType Plurals.设置禁用表名复数
 // func SetSingularTable(b bool) {
 // 	_map.SingularTable = b
 // }
 
-// // GetSingularTable Get Disabled Table Name Plurals.获取禁用表名复数
+// // GetSingularTable Get Disabled Table ChainType Plurals.获取禁用表名复数
 // func GetSingularTable() bool {
 // 	return _map.SingularTable
 // }
@@ -275,7 +275,7 @@ func GetWebTagType() int {
 	return _map.WebTagType
 }
 
-//GetTableNames get format tableNames by config. 获取格式化后设置的表名
+// GetTableNames get format tableNames by config. 获取格式化后设置的表名
 func GetTableNames() string {
 	var sb strings.Builder
 	if _map.TableNames != "" {
@@ -302,27 +302,27 @@ func GetTableNames() string {
 	return sb.String()
 }
 
-//GetOriginTableNames get origin tableNames. 获取原始的设置的表名
+// GetOriginTableNames get origin tableNames. 获取原始的设置的表名
 func GetOriginTableNames() string {
 	return _map.TableNames
 }
 
-//SetTableNames set tableNames. 设置生成的表名
+// SetTableNames set tableNames. 设置生成的表名
 func SetTableNames(tableNames string) {
 	_map.TableNames = tableNames
 }
 
-//GetIsColumnName get  gen columnName config . 获取生成列名的config
+// GetIsColumnName get  gen columnName config . 获取生成列名的config
 func GetIsColumnName() bool {
 	return _map.IsColumnName
 }
 
-//SetIsColumnName set gen ColumnName config. 设置生成列名的config
+// SetIsColumnName set gen ColumnName config. 设置生成列名的config
 func SetIsColumnName(isColumnName bool) {
 	_map.IsColumnName = isColumnName
 }
 
-//GetIsOutFileByTableName get  gen columnName config . 设置是否根据表名生成文件
+// GetIsOutFileByTableName get  gen columnName config . 设置是否根据表名生成文件
 func GetIsOutFileByTableName() bool {
 	return _map.IsOutFileByTableName
 }

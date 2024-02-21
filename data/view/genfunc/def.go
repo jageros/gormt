@@ -8,6 +8,32 @@ func (m *{{.StructName}}) TableName() string {
 }
 `
 	genColumn = `
+type I{{.StructName}} interface {
+{{range $em := .Em}}
+	Get{{$em.StructName}}() {{$em.Type}}{{end}}
+}
+
+{{$module := .StructName}}
+{{range $em := .Em}}
+func (m *{{$module}}) Get{{$em.StructName}}() {{$em.Type}} {
+	return m.{{$em.StructName}}
+}
+{{end}}
+
+// ToMap  struct to map 结构体转成map
+func (m *{{.StructName}}) ToMap() map[string]any {
+	return map[string]any{ {{range $em := .Em}}
+		"{{$em.ColumnName}}":m.{{$em.StructName}}, {{end}}
+	}
+}
+
+// ToMapWithoutModel  struct to map 结构体转成map, 不带gorm.Model
+func (m *{{.StructName}}) ToMapWithoutModel() map[string]any {
+	return map[string]any{ {{range $em := .Em}} {{ if and (ne $em.ColumnName "id") (ne $em.ColumnName "created_at") (ne $em.ColumnName "updated_at") (ne $em.ColumnName "deleted_at") }}
+		"{{$em.ColumnName}}":m.{{$em.StructName}}, {{end}}{{end}}
+	}
+}
+
 // {{.StructName}}Columns get sql column name.获取数据库列名
 var {{.StructName}}Columns = struct { {{range $em := .Em}}
 	{{$em.StructName}} string{{end}}    
